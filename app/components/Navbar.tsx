@@ -11,7 +11,7 @@ export default function Navbar() {
            
            </Link>
 
-           <ModeToggle/>
+           {/* <ModeToggle/> */}
         </nav>
     );
 }
