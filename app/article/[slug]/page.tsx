@@ -55,9 +55,6 @@ export default async function BlogArticle({ params }: { params: { slug: string }
         return <p>Failed to load article. Please try again later.</p>;
     }
 
-    // Log the data to inspect the content and tableOfContents structure
-    console.log('Fetched Data:', data);
-
     return (
         <Suspense fallback={<SkeletonArticle />}>
             <div className="min-h-screen">

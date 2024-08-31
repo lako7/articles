@@ -2,14 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { Clock } from 'lucide-react';
-
-interface Block {
-    _type: string;
-    children?: { _type: string; text: string }[];
-}
+import { PortableTextBlock } from '@portabletext/types';
 
 interface ReadingTimeProps {
-    content: Block[];
+    content: PortableTextBlock[]; // Adjusted type
 }
 
 export default function ReadingTime({ content }: ReadingTimeProps) {
@@ -19,32 +15,25 @@ export default function ReadingTime({ content }: ReadingTimeProps) {
         const calculateReadingTime = () => {
             let textContent = '';
 
+            // Extract text from PortableTextBlocks
             content.forEach(block => {
                 if (block._type === 'block' && block.children) {
                     block.children.forEach(child => {
-                        if (child._type === 'span' && child.text) {
-                            textContent += ` ${child.text}`;
+                        if ('text' in child) {
+                            textContent += child.text + ' ';
                         }
                     });
                 }
             });
 
-            const wpm = 200; // Average words per minute reading speed
-            const wordsArray = textContent.trim().match(/\w+/g); // Match all words
-            const words = wordsArray ? wordsArray.length : 0; // Count words
+            const wpm = 200; // Average words per minute
+            const words = textContent.trim().split(/\s+/).length;
+            const timeInMinutes = Math.ceil(words / wpm);
 
-            const timeInMinutes = words / wpm;
-            const roundedTime = Math.ceil(timeInMinutes); // Round up to nearest minute
-
-            console.log('Total Word Count:', words); // Debugging: check the word count
-            console.log('Calculated Reading Time (Minutes):', roundedTime); // Debugging: check the calculated time
-
-            setReadingTime(Math.max(1, roundedTime)); // Ensure at least 1 minute
+            setReadingTime(Math.max(1, timeInMinutes)); // Ensure at least 1 minute
         };
 
-        if (content && content.length > 0) {
-            calculateReadingTime();
-        }
+        calculateReadingTime();
     }, [content]);
 
     return (
