@@ -10,6 +10,7 @@ import ShareButtons from "@/components/ShareButton";
 import ReadingTime from "@/components/ReadingTime";
 import { BookOpen } from "lucide-react";
 
+// Custom components for PortableText
 const components: PortableTextComponents = {
     block: {
         blockquote: ({ children }) => (
