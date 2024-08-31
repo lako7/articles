@@ -1,13 +1,8 @@
-// components/TableOfContents.tsx
 "use client";
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-
-interface Section {
-    id: string;
-    title: string;
-}
+import { Section } from '@/app/lib/interface';
 
 interface TableOfContentsProps {
     sections: Section[];
@@ -17,24 +12,29 @@ export default function TableOfContents({ sections }: TableOfContentsProps) {
     const [activeSection, setActiveSection] = useState<string>('');
 
     useEffect(() => {
+        if (!sections || sections.length === 0) {
+            console.log('Table of Contents: No sections available');
+            return;
+        }
+
+        console.log('Table of Contents Sections:', sections);
+
         const handleScroll = () => {
-            if (sections && sections.length > 0 && typeof window !== 'undefined') {
-                let currentActiveSection = '';
-                sections.forEach(section => {
-                    const sectionElement = document.getElementById(section.id);
-                    if (sectionElement) {
-                        const sectionTop = sectionElement.offsetTop;
-                        const sectionHeight = sectionElement.clientHeight;
-                        if (
-                            window.pageYOffset >= sectionTop - 100 &&
-                            window.pageYOffset < sectionTop + sectionHeight - 100
-                        ) {
-                            currentActiveSection = section.id;
-                        }
+            let currentActiveSection = '';
+            sections.forEach(section => {
+                const sectionElement = document.getElementById(section.id);
+                if (sectionElement) {
+                    const sectionTop = sectionElement.offsetTop;
+                    const sectionHeight = sectionElement.clientHeight;
+                    if (
+                        window.pageYOffset >= sectionTop - 100 &&
+                        window.pageYOffset < sectionTop + sectionHeight - 100
+                    ) {
+                        currentActiveSection = section.id;
                     }
-                });
-                setActiveSection(currentActiveSection);
-            }
+                }
+            });
+            setActiveSection(currentActiveSection);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -51,7 +51,7 @@ export default function TableOfContents({ sections }: TableOfContentsProps) {
             <ul className="space-y-2">
                 {sections.map((item, index) => (
                     <motion.li
-                        key={item.id || index}
+                        key={item.id}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}

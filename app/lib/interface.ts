@@ -1,19 +1,34 @@
+import { PortableTextBlock } from '@portabletext/types';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+    
+
 export interface simpleBlogCard {
     title: string;
     smallDescription: string;
     currentSlug: string;
-    titleImage: any; // If possible, replace 'any' with a more specific type like 'SanityImageSource'
+    titleImage: SanityImageSource; // More specific type
+}
+
+export interface Child {
+    _type: string;
+    text: string;
+}
+
+export interface Block {
+    _type: string;
+    style?: string;
+    children?: Child[];
 }
 
 export interface Section {
-    id: string; // This should correspond to the `_key` or any unique identifier used in PortableText blocks
-    title: string; // The title extracted from the first child (usually text)
+    id: string;
+    title: string;
 }
 
 export interface fullArticle {
     currentSlug: string;
     title: string;
-    content: any[]; // Assuming 'content' is an array of PortableText blocks, you could use a type like PortableTextBlock[]
-    titleImage: any; // Similar to titleImage above, if you know the structure, replace 'any'
-    tableOfContents?: Section[]; // This is fine as is, it represents the TOC structure
+    content: PortableTextBlock[]; // Use a specific type like PortableTextBlock[]
+    titleImage: SanityImageSource;
+    tableOfContents?: Section[]; 
 }

@@ -8,7 +8,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import ShareButtons from "@/components/ShareButton";
 import ReadingTime from "@/components/ReadingTime";
-import TableOfContents from "@/components/TableOfContents";
+import { BookOpen } from "lucide-react";
 
 const components: PortableTextComponents = {
     block: {
@@ -63,11 +63,9 @@ export default async function BlogArticle({ params }: { params: { slug: string }
             <div className="min-h-screen">
                 <ScrollProgress />
                 <div className="mt-7 max-w-6xl mx-auto px-4 py-8 bg-white transition-colors duration-300 relative">
-                    <h1>
-                        <span className="block text-base text-center text-primary font-semibold tracking-wide uppercase">
-                            Article
-                        </span>
-                        <span className="mt-2 block text-3xl text-center leading-8 font-bold tracking-tight sm:text-4xl">
+                    <h1 className="text-center">
+                        <BookOpen className="w-12 h-12 text-gray-500 mx-auto" />
+                        <span className="mt-2 block text-3xl leading-8 font-bold tracking-tight sm:text-4xl">
                             {data.title}
                         </span>
                     </h1>
@@ -85,9 +83,6 @@ export default async function BlogArticle({ params }: { params: { slug: string }
                     <div className="mt-16 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary">
                         <PortableText value={data.content} components={components} />
                     </div>
-                    <aside className="hidden xl:block w-64 sticky top-24 self-start h-[calc(100vh-6rem)] overflow-auto">
-                        {data.tableOfContents && <TableOfContents sections={data.tableOfContents} />}
-                    </aside>
                 </div>
                 <ScrollToTopButton />
             </div>

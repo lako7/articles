@@ -1,33 +1,48 @@
-// components/ReadingTime.tsx
 "use client";
 
 import { useEffect, useState } from 'react';
 import { Clock } from 'lucide-react';
 
+interface Block {
+    _type: string;
+    children?: { _type: string; text: string }[];
+}
+
 interface ReadingTimeProps {
-    content: string | { id: string; title: string; text: string }[];
+    content: Block[];
 }
 
 export default function ReadingTime({ content }: ReadingTimeProps) {
-    const [readingTime, setReadingTime] = useState(0);
+    const [readingTime, setReadingTime] = useState<number>(1);
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const calculateReadingTime = () => {
-                let textContent = '';
+        const calculateReadingTime = () => {
+            let textContent = '';
 
-                if (Array.isArray(content)) {
-                    textContent = content.map(section => section.text).join(' ');
-                } else if (typeof content === 'string') {
-                    textContent = content;
+            content.forEach(block => {
+                if (block._type === 'block' && block.children) {
+                    block.children.forEach(child => {
+                        if (child._type === 'span' && child.text) {
+                            textContent += ` ${child.text}`;
+                        }
+                    });
                 }
+            });
 
-                const wpm = 225;
-                const words = textContent.trim().split(/\s+/).length;
-                const time = Math.ceil(words / wpm);
-                setReadingTime(time);
-            };
+            const wpm = 200; // Average words per minute reading speed
+            const wordsArray = textContent.trim().match(/\w+/g); // Match all words
+            const words = wordsArray ? wordsArray.length : 0; // Count words
 
+            const timeInMinutes = words / wpm;
+            const roundedTime = Math.ceil(timeInMinutes); // Round up to nearest minute
+
+            console.log('Total Word Count:', words); // Debugging: check the word count
+            console.log('Calculated Reading Time (Minutes):', roundedTime); // Debugging: check the calculated time
+
+            setReadingTime(Math.max(1, roundedTime)); // Ensure at least 1 minute
+        };
+
+        if (content && content.length > 0) {
             calculateReadingTime();
         }
     }, [content]);

@@ -32,6 +32,11 @@ export default function RootLayout({
        
         </ThemeProvider>
         </body>
+        <div className="text-center py-8">
+    <p className="text-sm text-gray-700 dark:text-gray-400">
+      © 2024 GenBibleAI
+      </p>
+      </div>
     </html>
   );
 }
