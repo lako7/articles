@@ -26,7 +26,7 @@ export default async function Home() {
   const data: simpleBlogCard[] = await getData();
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <div className=" min-h-screen">
       {/* Blog Landing Page */}
       <main className="container max-w-[1400px] mx-auto px-4 py-4">
         <h2 className="text-5xl font-bold mb-12 text-center bg-clip-text bg-gradient-to-r from-primary to-teal-600">
@@ -57,7 +57,7 @@ export default async function Home() {
                 </CardHeader>
                 <CardContent className="p-4 flex flex-col flex-grow">
                   {index === 0 && (
-                    <Badge className="mb-2 bg-gradient-to-r from-gray-300 to-teal-600 text-white">LATEST</Badge>
+                    <Badge className="mb-2 bg-gradient-to-r from-teal-600 to-teal-500 text-white">LATEST</Badge>
                   )}
                   <CardTitle className="text-xl mb-2 group-hover:text-teal-600 transition-colors duration-300">
                     {post.title}

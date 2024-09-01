@@ -9,6 +9,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 import ShareButtons from "@/components/ShareButton";
 import ReadingTime from "@/components/ReadingTime";
 import { BookOpen } from "lucide-react";
+import { CtaBox } from "@/app/components/ctabox";
 
 // Custom components for PortableText
 const components: PortableTextComponents = {
@@ -84,6 +85,7 @@ export default async function BlogArticle({ params }: { params: { slug: string }
                 </div>
                 <ScrollToTopButton />
             </div>
+            <CtaBox />
         </Suspense>
     );
 }

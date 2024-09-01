@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
 import Navbar from "./components/Navbar";
+import { Instagram } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -58,6 +59,14 @@ export default function RootLayout({
             <p className="text-sm text-gray-700 dark:text-gray-400">
               © 2024 GenBibleAI
             </p>
+
+            <div className="justify-center flex mt-2">
+              <a href="https://www.instagram.com/genbibleai/">
+            <p className="text-sm text-gray-700 dark:text-gray-400">
+            <Instagram />
+            </p>
+            </a>
+            </div>
           </footer>
         </ThemeProvider>
       </body>
