@@ -28,22 +28,26 @@ export default async function Home() {
   return (
     <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
       {/* Blog Landing Page */}
-      <main className="container max-w-[1400px] mx-auto px-4 py-8">
-        <h2 className="text-5xl font-bold mb-12 text-center bg-clip-text bg-gradient-to-r from-primary to-teal-600 flex justify-center items-center">
-          <BookOpen className="w-12 h-12 text-gray-500" />
+      <main className="container max-w-[1400px] mx-auto px-4 py-4">
+        <h2 className="text-5xl font-bold mb-12 text-center bg-clip-text bg-gradient-to-r from-primary to-teal-600">
+          Biblical Insights and Perspectives
         </h2>
+        <p className="text-center text-muted-foreground mb-8">Explore our collection of articles and blog posts.</p>
+        <div className="flex justify-center items-center mb-12">
+          <BookOpen className="w-12 h-12 text-gray-500" />
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {data.map((post, index) => (
             <Link href={`/article/${post.currentSlug}`} key={index}>
-              <Card className={`${index === 0 ? 'md:col-span-2' : ''} group hover:shadow-lg transition-all duration-300 overflow-hidden`}>
-                <CardHeader className="p-0 relative overflow-hidden">
+              <Card className="group hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full max-h-[450px]">
+                <CardHeader className="p-0 relative overflow-hidden h-[200px]">
                   <Image 
                     src={urlFor(post.titleImage).url()} 
                     alt={post.title} 
                     width={600} 
                     height={400} 
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" 
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <Button variant="secondary" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -51,17 +55,16 @@ export default async function Home() {
                     </Button>
                   </div>
                 </CardHeader>
-                <CardContent className="p-4">
+                <CardContent className="p-4 flex flex-col flex-grow">
                   {index === 0 && (
                     <Badge className="mb-2 bg-gradient-to-r from-gray-300 to-teal-600 text-white">LATEST</Badge>
                   )}
                   <CardTitle className="text-xl mb-2 group-hover:text-teal-600 transition-colors duration-300">
                     {post.title}
                   </CardTitle>
-                  <p className="text-gray-600 mb-4 line-clamp-2">{post.smallDescription}</p>
-                  <div className="flex items-center text-sm text-gray-500">
-                    {/* <span>Published on {post.date || 'Unknown date'} • 5 min read</span> */}
-                  </div>
+                  <p className="text-gray-600 mb-4 line-clamp-2 flex-grow">
+                    {post.smallDescription}
+                  </p>
                 </CardContent>
               </Card>
             </Link>
