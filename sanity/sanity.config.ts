@@ -5,7 +5,7 @@ import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'ArticlesGenBibleAI',
+  title: 'ArticlesCommissionAI',
 
   projectId: 'dtsg0jfk',
   dataset: 'production',
