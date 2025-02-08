@@ -57,7 +57,7 @@ export default function RootLayout({
           </main>
           <footer className="text-center py-8">
             <p className="text-sm text-gray-700 dark:text-gray-400">
-              © 2024 Commission AI
+              © 2025 Commission AI
             </p>
 
             <div className="justify-center flex mt-2">
