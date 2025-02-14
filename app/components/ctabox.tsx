@@ -28,7 +28,7 @@ export function CtaBox() {
           </p>
           <div className="transform transition-transform hover:scale-105">
             <Button variant="secondary" className="bg-white text-emerald-600 hover:bg-green-100 transition-colors duration-300 font-semibold">
-             <a href="https://www.thecommission.ai">
+             <a href="https://www.Rhemafy.ai">
               Join the Waitlist
               </a>
               <div className="ml-2 inline-block transform transition-transform hover:translate-x-1">

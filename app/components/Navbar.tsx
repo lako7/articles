@@ -5,11 +5,11 @@ export default function Navbar() {
     return (
         <nav className="w-full relative flex items-center justify-between max-w-2xl mx-auto px-4 py-5">
             <Link href="/" className="font-bold text-2xl">
-                Commission<span className="text-teal-600">AI</span>
+                RHEMA<span className="text-teal-600">FY</span>
             </Link>
 
             {/* Button wrapped with Link */}
-            <Link href="https://www.thecommission.ai" passHref>
+            <Link href="https://www.rhemafy.ai" passHref>
                 <Button variant="outline">Join the Waitlist</Button>
             </Link>
 
