@@ -61,7 +61,7 @@ export default function RootLayout({
             </p>
 
             <div className="justify-center flex mt-2">
-              <a href="https://www.instagram.com/thecommission.ai/">
+              <a href="https://www.instagram.com/rhemafy">
             <p className="text-sm text-gray-700 dark:text-gray-400">
             <Instagram />
             </p>
