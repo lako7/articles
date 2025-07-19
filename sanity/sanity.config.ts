@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'ArticlesRhemafy',
 
-  projectId: 'dtsg0jfk',
+  projectId: 'y9feyk51',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
