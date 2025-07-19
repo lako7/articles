@@ -68,13 +68,15 @@ export default async function BlogArticle({ params }: { params: { slug: string }
                             {data.title}
                         </span>
                     </h1>
-                    <Image
-                        src={urlFor(data.titleImage).url()}
-                        width={300}
-                        height={200}
-                        alt="titleImage"
-                        className="rounded-lg mt-8 mx-auto"
-                    />
+                    {data.titleImage && (
+  <Image
+    src={urlFor(data.titleImage).url()}
+    width={300}
+    height={200}
+    alt="titleImage"
+    className="rounded-lg mt-8 mx-auto"
+  />
+)}
                     <div className="flex items-center space-x-4 mb-4">
                         <ReadingTime content={data.content} />
                         <ShareButtons title={data.title}/>

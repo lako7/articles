@@ -43,8 +43,8 @@ export default async function Home() {
               <Card className="group hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full max-h-[450px]">
                 <CardHeader className="p-0 relative overflow-hidden h-[200px]">
                   <Image 
-                    src={urlFor(post.titleImage).url()} 
-                    alt={post.title} 
+                  src={post.titleImage ? urlFor(post.titleImage).url() : '/fallback.jpg'}
+                  alt={post.title} 
                     width={600} 
                     height={400} 
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
