@@ -1,5 +1,5 @@
-import { fullArticle } from "@/app/lib/interface";
-import { client, urlFor } from "@/app/lib/sanity";
+import { fullArticle } from "@/app/(base)/lib/interface";
+import { client, urlFor } from "@/app/(base)/lib/sanity";
 import { PortableText, PortableTextComponents } from "next-sanity";
 import Image from "next/image";
 import { Suspense } from "react";
@@ -9,7 +9,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 import ShareButtons from "@/components/ShareButton";
 import ReadingTime from "@/components/ReadingTime";
 import { BookOpen } from "lucide-react";
-import { CtaBox } from "@/app/components/ctabox";
+import { CtaBox } from "@/app/(base)/components/ctabox";
 
 // Custom components for PortableText
 const components: PortableTextComponents = {
