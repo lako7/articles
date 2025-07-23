@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Section } from '@/app/lib/interface';
+import { Section } from '@/app/(base)/lib/interface';
 
 interface TableOfContentsProps {
     sections: Section[];
